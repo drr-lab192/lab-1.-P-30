@@ -51,4 +51,29 @@ namespace lab_1.P_30
             }
         }
 
-        
+        static double CalculateDeliveryPrice(double orderCost, double distance, int hour)
+        {
+            double price = 0;
+            if (orderCost >= 2000)
+            {
+                price = 0;
+            }
+            else
+            {
+                price = 150;
+                if (distance > 3)
+                {
+                    price += (distance - 3) * 50;
+                }
+            }
+
+            // Проверка часов пик
+            if ((hour >= 12 && hour <= 14) || (hour >= 18 && hour <= 20))
+            {
+                price *= 1.3; // повышение на 30%
+            }
+
+            return Math.Round(price);
+        }
+    }
+}
