@@ -10,6 +10,15 @@ namespace lab_1.P_30
     {
         static void Main(string[] args)
         {
+            double orderCost = ReadPositiveDouble("Введите стоимость заказа (руб.): ");
+            double distance = ReadPositiveDouble("Введите расстояние доставки (км): ");
+            int hour = ReadHour("Введите время заказа (час, 0-23): ");
+
+            double deliveryPrice = CalculateDeliveryPrice(orderCost, distance, hour);
+            double total = orderCost + deliveryPrice;
+
+            Console.WriteLine($"Стоимость доставки: {deliveryPrice} руб.");
+            Console.WriteLine($"Итого к оплате: {total} руб.");
         }
-    }
-}
+
+        
