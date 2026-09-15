@@ -36,4 +36,19 @@ namespace lab_1.P_30
             }
         }
 
+        static int ReadHour(string message)
+        {
+            int hour;
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out hour) && hour >= 0 && hour <= 23)
+                {
+                    return hour;
+                }
+                Console.WriteLine("Некорректный ввод. Час должен быть в диапазоне 0-23. Попробуйте снова.");
+            }
+        }
+
         
