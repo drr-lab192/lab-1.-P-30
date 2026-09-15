@@ -21,4 +21,19 @@ namespace lab_1.P_30
             Console.WriteLine($"Итого к оплате: {total} руб.");
         }
 
+        static double ReadPositiveDouble(string message)
+        {
+            double value;
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (double.TryParse(input, out value) && value >= 0)
+                {
+                    return value;
+                }
+                Console.WriteLine("Некорректный ввод. Попробуйте снова.");
+            }
+        }
+
         
