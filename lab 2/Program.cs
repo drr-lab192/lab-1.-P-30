@@ -39,77 +39,79 @@ namespace lab_2
                 ShowStock(names, stock);
             }
 
+        }
 
-            static void ShowProducts(string[] names, int[] prices, int[] stock)
+        static void ShowProducts(string[] names, int[] prices, int[] stock)
+        {
+            Console.WriteLine("Ассортимент:");
+
+            for (int i = 0; i < names.Length; i++)
+                Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб., {stock[i]} шт.");
+        }
+
+        static void ReadOrder(int[] order, int productCount)
+        {
+            while (true)
             {
-                Console.WriteLine("Ассортимент:");
+                int number = ReadNumber("Введите номер товара (0 — конец заказа): ", 0, productCount);
 
-                for (int i = 0; i < names.Length; i++)
-                    Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб., {stock[i]} шт.");
-            }
+                if (number == 0)
+                    break;
 
-            static void ReadOrder(int[] order, int productCount)
-            {
-                while (true)
-                {
-                    int number = ReadNumber("Введите номер товара (0 — конец заказа): ", 0, productCount);
-
-                    if (number == 0)
-                        break;
-
-                    int quantity = ReadNumber("Введите количество: ", 0, int.MaxValue);
-                    order[number - 1] += quantity;
-                }
-            }
-
-            static int ReadNumber(string message, int min, int max)
-            {
-                int number;
-
-                while (true)
-                {
-                    Console.Write(message);
-
-                    if (int.TryParse(Console.ReadLine(), out number) &&
-                        number >= min && number <= max)
-                    {
-                        return number;
-                    }
-
-                    Console.WriteLine("Некорректный ввод. Попробуйте ещё раз.");
-                }
-            }
-
-
-            static int FindMissingProduct(int[] order, int[] stock)
-            {
-                for (int i = 0; i < order.Length; i++)
-                {
-                    if (order[i] > stock[i])
-                        return i;
-                }
-
-                return -1;
-            }
-
-            
-            static int CalculateTotal(int[] order, int[] prices)
-            {
-                int total = 0;
-
-                for (int i = 0; i < order.Length; i++)
-                    total += order[i] * prices[i];
-
-                return total;
-            }
-
-            
-            static void ShowStock(string[] names, int[] stock)
-            {
-                Console.WriteLine("Остатки:");
-
-                for (int i = 0; i < names.Length; i++)
-                    Console.WriteLine($"{names[i]} — {stock[i]} шт.");
+                int quantity = ReadNumber("Введите количество: ", 0, int.MaxValue);
+                order[number - 1] += quantity;
             }
         }
+
+        static int ReadNumber(string message, int min, int max)
+        {
+            int number;
+
+            while (true)
+            {
+                Console.Write(message);
+
+                if (int.TryParse(Console.ReadLine(), out number) &&
+                    number >= min && number <= max)
+                {
+                    return number;
+                }
+
+                Console.WriteLine("Некорректный ввод. Попробуйте ещё раз.");
+            }
+        }
+
+
+        static int FindMissingProduct(int[] order, int[] stock)
+        {
+            for (int i = 0; i < order.Length; i++)
+            {
+                if (order[i] > stock[i])
+                    return i;
+            }
+
+            return -1;
+        }
+
+
+        static int CalculateTotal(int[] order, int[] prices)
+        {
+            int total = 0;
+
+            for (int i = 0; i < order.Length; i++)
+                total += order[i] * prices[i];
+
+            return total;
+        }
+
+
+        static void ShowStock(string[] names, int[] stock)
+        {
+            Console.WriteLine("Остатки:");
+
+            for (int i = 0; i < names.Length; i++)
+                Console.WriteLine($"{names[i]} — {stock[i]} шт.");
+        }
+
     }
+}
