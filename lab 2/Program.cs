@@ -61,3 +61,33 @@ namespace lab_2
                     order[number - 1] += quantity;
                 }
             }
+
+            static int ReadNumber(string message, int min, int max)
+            {
+                int number;
+
+                while (true)
+                {
+                    Console.Write(message);
+
+                    if (int.TryParse(Console.ReadLine(), out number) &&
+                        number >= min && number <= max)
+                    {
+                        return number;
+                    }
+
+                    Console.WriteLine("Некорректный ввод. Попробуйте ещё раз.");
+                }
+            }
+
+            
+            static int FindMissingProduct(int[] order, int[] stock)
+            {
+                for (int i = 0; i < order.Length; i++)
+                {
+                    if (order[i] > stock[i])
+                        return i;
+                }
+
+                return -1;
+            }
