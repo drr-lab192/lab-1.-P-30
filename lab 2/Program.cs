@@ -47,3 +47,17 @@ namespace lab_2
                 for (int i = 0; i < names.Length; i++)
                     Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб., {stock[i]} шт.");
             }
+
+            static void ReadOrder(int[] order, int productCount)
+            {
+                while (true)
+                {
+                    int number = ReadNumber("Введите номер товара (0 — конец заказа): ", 0, productCount);
+
+                    if (number == 0)
+                        break;
+
+                    int quantity = ReadNumber("Введите количество: ", 0, int.MaxValue);
+                    order[number - 1] += quantity;
+                }
+            }
