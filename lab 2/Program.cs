@@ -39,7 +39,7 @@ namespace lab_2
                 ShowStock(names, stock);
             }
 
-         
+
             static void ShowProducts(string[] names, int[] prices, int[] stock)
             {
                 Console.WriteLine("Ассортимент:");
@@ -80,7 +80,7 @@ namespace lab_2
                 }
             }
 
-            
+
             static int FindMissingProduct(int[] order, int[] stock)
             {
                 for (int i = 0; i < order.Length; i++)
@@ -91,3 +91,25 @@ namespace lab_2
 
                 return -1;
             }
+
+            
+            static int CalculateTotal(int[] order, int[] prices)
+            {
+                int total = 0;
+
+                for (int i = 0; i < order.Length; i++)
+                    total += order[i] * prices[i];
+
+                return total;
+            }
+
+            
+            static void ShowStock(string[] names, int[] stock)
+            {
+                Console.WriteLine("Остатки:");
+
+                for (int i = 0; i < names.Length; i++)
+                    Console.WriteLine($"{names[i]} — {stock[i]} шт.");
+            }
+        }
+    }
