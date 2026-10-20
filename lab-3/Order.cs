@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace lab_3
 {
-    internal class Order
+    public class Order
     {
+        public int[] Quantities;
+
+        public Order(int productCount)  //создаёт пустой заказ 
+        {
+            Quantities = new int[productCount];
+        }
+
+        public void Add(int productIndex, int quantity) ///прибавляет количество к позиции заказа
+        {
+            Quantities[productIndex] += quantity;
+        }
     }
 }
