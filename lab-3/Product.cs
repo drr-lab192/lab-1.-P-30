@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace lab_3
 {
-    internal class Product
+    public class Product
     {
+        public string Name;
+        public int Price;
+        public int Stock;
+
+        public Product(string name, int price, int stock)
+        {
+            Name = name;
+            Price = price;
+            Stock = stock;
+        }
     }
 }
