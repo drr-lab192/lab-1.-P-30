@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace lab_3
 {
-    internal class ProductCategory
+     enum ProductCategory
     {
+        Writing,     // Письменные принадлежности
+        Paper,       // Бумажные изделия
+        Drawing,     // Товары для рисования
+        Storage      // Папки
     }
 }
