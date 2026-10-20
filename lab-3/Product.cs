@@ -8,15 +8,15 @@ namespace lab_3
 {
     public class Product
     {
-        public string Name;
-        public int Price;
-        public int Stock;
+        private string Name_;
+        private int Price_;
+        private int Stock_;
 
         public Product(string name, int price, int stock)
         {
-            Name = name;
-            Price = price;
-            Stock = stock;
+            Name_ = name;
+            Price_ = price;
+            Stock_ = stock;
         }
     }
 }
